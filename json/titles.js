@@ -1,4 +1,4 @@
-[
+var _Titles = [
   {
     "title_id": 83246,
     "title_iid": "83246",

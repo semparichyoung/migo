@@ -1,4 +1,4 @@
-[
+var _Mapping = [
         {
                 "key": "btns",
                 "name": "",
@@ -11,12 +11,12 @@
         },
         {
                 "key": "season_id",
-                "name": "ID",
+                "name": "",
                 "id": "Id"
         },
         {
                 "key": "episode_id",
-                "name": "ID",
+                "name": "",
                 "id": "Id"
         },
         {

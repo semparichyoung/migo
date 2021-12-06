@@ -36,7 +36,7 @@ Content.prototype.generateHeader = function () {
     var html = "<div id='tableHeader'>";
     for (let i = 0; i < this.mapping.length; i++) {
         const obj = this.mapping[i];
-        html += "<div id='tableHeader" + obj.id + "' class='tableItem tableHeader'>" + obj.name + "</div>";
+        html += "<div id='tableHeader" + obj.id + "' class='tableItem tableHeader table" + obj.id + "s'><span>" + obj.name + "</span></div>";
     }
     html += "</div>";
     this.dom.header.innerHTML = html;
@@ -46,19 +46,18 @@ Content.prototype.generateContent = function() {
     if(this.mapping.length < 1) return;
     if(this.data.length < 1) return;
     var html = "<div id='tableContent'>";
-    var mapLeng = this.mapping.length;
     for (let i = 0; i < this.data.length; i++) {
         html += this.generateList(this.data[i]);
-
     }
     html += "</div>";
+    this.dom.content.innerHTML = html;
     return this;
 };
 Content.prototype.generateList = function(data) {
     var html = "<div id='tableList" + data.title_id + "' class='tableList tableList'>";
     for (let i = 0; i < this.mapping.length; i++) {
         const obj = this.mapping[i];
-        html += "<div id='tableContent" + map.id + "_" + i + "' class='tableItem tableContent'>";
+        html += "<div id='tableContent" + obj.id + "_" + i + "' class='tableItem tableContent table" + obj.id + "s'>";
         if (typeof this["generate" + obj.id] == "function") {
             html += this["generate" + obj.id](data);
         }else if(typeof data[obj.key] == "string" || typeof data[obj.key] == "number"){
@@ -83,15 +82,16 @@ Content.prototype.generateList = function(data) {
         }
         html += "</div>";
     }
+    html += "</div>";
     return html;
 };
 Content.prototype.generateBtn = function(data) {
     if (typeof data.title_id == "number" && typeof data.seasons == "object" && data.seasons.length > 0) {
-        return "<div class='tablBtns triangleBtn'></div>";
+        return "<div class='tableBtn triangleBtn'></div>";
     } else if (typeof data.season_id == "number" && typeof data.episodes == "object" && data.episodes.length > 0) {
-        return "<div class='tablBtns plusBtn'></div>";
+        return "<div class='tableBtn plusBtn'></div>";
     }
-    return "<div class='tablBtns'></div>";
+    return "<div class='tableBtn'></div>";
 };
 Content.prototype.generateTitles = function(data) {
     let html = "<div class='tableTitle'>";
@@ -161,5 +161,7 @@ Content.prototype.generateProgrammable = function (data) {
 }
 Content.prototype.generate = function() {
     if(this.inited === false) this.init();
-
+    this.generateHeader();
+    this.generateContent();
+    return this;
 };

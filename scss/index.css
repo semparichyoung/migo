@@ -41,4 +41,8 @@
 .programSwitch.active::before {
   margin-left: 26px;
 }
+
+body {
+  margin: 0px;
+}
 /*# sourceMappingURL=index.css.map */

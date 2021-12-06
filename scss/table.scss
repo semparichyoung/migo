@@ -1,0 +1,41 @@
+#main {
+    width: 95%;
+    margin: 0 auto;
+    border-radius: 4px;
+    overflow: hidden;
+    margin-top: 16px;
+
+    #tableHeader {
+        background: #E8E8E7;
+        box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.2);
+        font-size: 12px;
+        line-height: 20px;
+        height: 48px;
+    }
+    .tableContent {
+    }
+    .tableList {
+        display: flex;
+        padding: 0px 3%;
+        height: 45px;
+        box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.15);
+    }
+    .tableItem {
+        font-size: 12px;
+        line-height: 20px;
+        height: 100%;
+        display: inline-block;
+        flex: 1 1 auto;
+        >span, .programSwitch {
+            vertical-align: middle;
+            display: inline-block;
+        }
+        &:not(.tableBtn)::before {
+            content: "";
+            vertical-align: middle;
+            width: 0px;
+            height: 100%;
+            display: inline-block;
+        }
+    }
+}

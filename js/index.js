@@ -1,6 +1,9 @@
 (function() {
-    var _Mapping = require('json/data.json');
-    var _Titles = require('json/titles.json');
+    var content = new Content();
+    window.content = content;
+    content.setMapping(_Mapping);
+    content.setData(_Titles);
+    content.generate();
 })();
 
 function activate(e) {
