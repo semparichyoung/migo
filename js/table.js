@@ -144,7 +144,7 @@ Content.prototype.generateProgrammable = function (data) {
     if (data.activate) {
         active = " active";
     }
-    html += "<div class='programSwitch" + active + "'></div>";
+    html += "<div class='programSwitch" + active + "' onclick='activate(this)'></div>";
     let programText = "";
     if (typeof data.content_type == "string" && data.content_type == "Movie") {
         programText = "Single Movie";
