@@ -36,7 +36,7 @@ Content.prototype.generateHeader = function () {
     var html = "<div id='tableHeader'>";
     for (let i = 0; i < this.mapping.length; i++) {
         const obj = this.mapping[i];
-        html += "<div id='tableHeader" + obj.id + "' class='tableItem tableHeader table" + obj.id + "s'><span>" + obj.name + "</span></div>";
+        html += "<div id='tableHeader" + obj.id + "' class='tableItem tableHeader table" + obj.id + "s " + obj.class + "'><span>" + obj.name + "</span></div>";
     }
     html += "</div>";
     this.dom.header.innerHTML = html;
@@ -57,7 +57,7 @@ Content.prototype.generateList = function(data) {
     var html = "<div id='tableList" + data.title_id + "' class='tableList tableList'>";
     for (let i = 0; i < this.mapping.length; i++) {
         const obj = this.mapping[i];
-        html += "<div id='tableContent" + obj.id + "_" + i + "' class='tableItem tableContent table" + obj.id + "s'>";
+        html += "<div id='tableContent" + obj.id + "_" + i + "' class='tableItem tableContent table" + obj.id + "s " + obj.class + "'>";
         if (typeof this["generate" + obj.id] == "function") {
             html += this["generate" + obj.id](data);
         }else if(typeof data[obj.key] == "string" || typeof data[obj.key] == "number"){
@@ -107,7 +107,7 @@ Content.prototype.generateTitles = function(data) {
     return html;
 };
 Content.prototype.generateSeason = function(data) {
-    let html = "<div class='tableSeason'>";
+    let html = "<span class='tableSeason'>";
     if (typeof data.title_id == "number" && typeof data.seasons == "object") {
         html += data.seasons.length;
     }else if(typeof data.season_id == "number" && typeof data.season_name == "string") {
@@ -115,11 +115,11 @@ Content.prototype.generateSeason = function(data) {
     }else {
         html += "-";
     }
-    html += "</div>";
+    html += "</span>";
     return html;
 };
 Content.prototype.generateEpisode = function(data) {
-    let html = "<div class='tableEpisode'>";
+    let html = "<span class='tableEpisode'>";
     if (typeof data.title_id == "number" && typeof data.episode_count == "number") {
         html += data.episode_count;
     } else if (typeof data.season_id == "number" && typeof data.episode_count == "number") {
@@ -129,14 +129,14 @@ Content.prototype.generateEpisode = function(data) {
     } else {
         html += "-";
     }
-    html += "</div>";
+    html += "</span>";
     return html;
 };
 Content.prototype.generatePublish = function (data) {
     let d = new Date(data.publish_timestamp).toString();
     dateAry = d.split(" ");
     dateAry = dateAry.slice(1, 4);
-    return "<div class='tablePublish'>" + dateAry.join(" ") + "</div>";
+    return "<span class='tablePublish'>" + dateAry.join(" ") + "</span>";
 };
 Content.prototype.generateProgrammable = function (data) {
     let html = "<div class='programDom'>";

@@ -10,25 +10,31 @@
         box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.2);
         font-size: 12px;
         line-height: 20px;
+        padding: 0px 3%;
         height: 48px;
     }
     .tableContent {
     }
     .tableList {
-        display: flex;
         padding: 0px 3%;
         height: 45px;
         box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.15);
+        &:hover {
+            background: rgba(78, 160, 221, 0.1);
+        }
     }
     .tableItem {
         font-size: 12px;
         line-height: 20px;
         height: 100%;
-        display: inline-block;
-        flex: 1 1 auto;
-        >span, .programSwitch {
+        display: block;
+        float: left;
+        >span, .programSwitch, .programDom {
             vertical-align: middle;
             display: inline-block;
+        }
+        .programSwitch {
+            margin-right: 16px;
         }
         &:not(.tableBtn)::before {
             content: "";
@@ -37,5 +43,37 @@
             height: 100%;
             display: inline-block;
         }
+
+    }
+    .tableIds {
+        color: #494948;
+    }
+    .tableTitles {
+        font-weight: bold;
+    }
+    .tableProgrammables {
+        float: right;
+    }
+    .tableSeasonsDiv, .tableEpisodeDiv {
+        display: none;
+    }
+
+    .fit {
+        width: 25px;
+    }
+    .col-1 {
+        width: 56px;
+    }
+    .col-2 {
+        width: 112px;
+    }
+    .col-3 {
+        width: 168px;
+    }
+    .col-4 {
+        width: 224px;
+    }
+    .col-5 {
+        width: 280px;
     }
 }
