@@ -12,3 +12,27 @@
     border-width: 8px 5px 0 5px;
     border-color: #7c7c7b transparent transparent transparent;
 }
+
+.programSwitch {
+    width: 45px;
+    height: 19px;
+    border-radius: 10px;
+    background: #7C7C7B;
+    border: 1px solid #7C7C7B;
+    &::before {
+        content: '';
+        width: 19px;
+        height: 19px;
+        border-radius: 10px;
+        background: #FFF;
+        float: left;
+        transition: all 1s;
+    }
+    &.active {
+        background: #08AA5E;
+        border: 1px solid #08AA5E;
+        &::before {
+            margin-left: 26px;
+        }
+    }
+}

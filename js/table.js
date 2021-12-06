@@ -82,13 +82,60 @@ Content.prototype.generateBtn = function(data) {
         return "<div class='tablBtns plusBtn'></div>";
     }
     return "<div class='tablBtns'></div>";
-}
-Content.prototype.generatePublish = function(date) {
-    let d = new Date(date.publish_timestamp).toString();
+};
+Content.prototype.generateSeason = function(data) {
+    let html = "<div class='tableSeason'>";
+    if (typeof data.title_id == "number" && typeof data.seasons == "object") {
+        html += data.seasons.length;
+    }else if(typeof data.season_id == "number" && typeof data.season_name == "string") {
+        html += data.season_name;
+    }else {
+        html += "-";
+    }
+    html += "</div>";
+    return html;
+};
+Content.prototype.generateEpisode = function(data) {
+    let html = "<div class='tableEpisode'>";
+    if (typeof data.title_id == "number" && typeof data.episode_count == "number") {
+        html += data.episode_count;
+    } else if (typeof data.season_id == "number" && typeof data.episode_count == "number") {
+        html += data.episode_count;
+    } else if (typeof data.episode_id == "number" && typeof data.season_name == "string") {
+        html += "EP" + data.episode_number;
+    } else {
+        html += "-";
+    }
+    html += "</div>";
+    return html;
+};
+Content.prototype.generatePublish = function (data) {
+    let d = new Date(data.publish_timestamp).toString();
     dateAry = d.split(" ");
     dateAry = dateAry.slice(1, 4);
-    return dateAry.join(" ");
+    return "<div class='tablePublish'>" + dateAry.join(" ") + "</div>";
 };
+Content.prototype.generateProgrammable = function (data) {
+    let html = "<div class='programDom'>";
+    let active = "";
+    if (data.activate) {
+        active = " active";
+    }
+    html += "<div class='programSwitch" + active + "'></div>";
+    let programText = "";
+    if (typeof data.content_type == "string" && data.content_type == "Movie") {
+        programText = "Single Movie";
+    } else if (typeof data.content_type == "string" && data.content_type == "Series") {
+        programText = "All Seasons";
+    } else if (typeof data.season_id == "number") {
+        programText = "All Episodes";
+    } else if (typeof data.episode_id == "number") {
+        programText = "Per Episodes";
+    }
+    html += "<span class='programText'>" + programText + "</span>";
+    html += "</div>";
+    return html;
+}
 Content.prototype.generate = function() {
     if(this.inited === false) this.init();
 
