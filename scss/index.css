@@ -1,0 +1,16 @@
+.triangleBtn {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 4px 0 4px 10px;
+  border-color: transparent transparent transparent #7c7c7b;
+}
+
+.extend .triangleBtn {
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 8px 5px 0 5px;
+  border-color: #7c7c7b transparent transparent transparent;
+}
+/*# sourceMappingURL=index.css.map */
