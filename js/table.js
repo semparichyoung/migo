@@ -68,10 +68,20 @@ Content.prototype.generateList = function(data) {
         html += "</div>";
     }
     if (typeof data.seasons == "object" && data.seasons.length > 0) {
+        html += "<div class='tableSeasonsDiv'>";
         for (let j = 0; j < data.seasons.length; j++) {
             const season = data.seasons[j];
-            html += this.generateList(this.data.seasons[j]);
+            html += "<div class='indentLine'></div>" + this.generateList(season);
+            if (typeof data.episodes == "object" && data.episodes.length > 0) {
+                html += "<div class='tableEpisodeDiv'>";
+                for (let k = 0; k < data.episodes.length; k++) {
+                    const ep = data.episodes[k];
+                    html += "<div class='indentLine'></div>" + this.generateList(ep);
+                }
+                html += "</div>";
+            }
         }
+        html += "</div>";
     }
     return html;
 };
@@ -82,6 +92,19 @@ Content.prototype.generateBtn = function(data) {
         return "<div class='tablBtns plusBtn'></div>";
     }
     return "<div class='tablBtns'></div>";
+};
+Content.prototype.generateTitles = function(data) {
+    let html = "<div class='tableTitle'>";
+    let title = "";
+    if(typeof data.title_name == "string") {
+        title = data.title_name;
+    }else if(typeof data.season_name == "string") {
+        title = data.season_name;
+    } else if (typeof data.episode_name == "string") {
+        title = data.episode_name;
+    }
+    html += title + "</div>";
+    return html;
 };
 Content.prototype.generateSeason = function(data) {
     let html = "<div class='tableSeason'>";
