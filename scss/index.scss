@@ -1,3 +1,25 @@
+#title {
+    margin: 20px;
+    margin-left: 5%;
+}
+#searchDiv {
+    border: 2px solid #C3C3C2;
+    display: inline-block;
+    margin-left: 5%;
+}
+#searchIcon {
+    background: #fff;
+    border: 0px;
+    margin-top: 5px;
+    >img {
+        vertical-align: middle;
+    }
+}
+#searchInput {
+    height: 36px;
+    border: 0px;
+    width: 300px;
+}
 .hide {
     display: none;
 }

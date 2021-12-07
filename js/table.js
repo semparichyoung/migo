@@ -116,7 +116,7 @@ Content.prototype.generateBtn = function(data) {
     return "<div class='tableBtn'></div>";
 };
 Content.prototype.generateTitle = function(data) {
-    let html = "<div class='tableTitles'>";
+    let html = "<div class='tableTitle'>";
     let title = "";
     if(typeof data.title_name == "string") {
         title = data.title_name;
@@ -194,8 +194,10 @@ Content.prototype.generateProgrammable = function (data) {
     html += "</div>";
     return html;
 }
-Content.prototype.generate = function() {
+Content.prototype.generate = function(filter) {
     if(this.inited === false) this.init();
+    this.filter = filter || "";
+    this.filter = this.filter.toLowerCase();
     this.generateHeader();
     this.generateContent();
     return this;
