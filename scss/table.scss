@@ -13,7 +13,9 @@
         padding: 0px 3%;
         height: 48px;
     }
-    .tableContent {
+    .tableSeasonsDiv, .tableEpisodeDiv {
+        transition: all .5s;
+
     }
     .tableList {
         padding: 0px 3%;
@@ -21,6 +23,9 @@
         box-shadow: inset 0px -1px 0px rgba(0, 0, 0, 0.15);
         &:hover {
             background: rgba(78, 160, 221, 0.1);
+        }
+        .triangleBtn, .plusBtn {
+            cursor: pointer;
         }
     }
     .tableItem {
@@ -36,7 +41,7 @@
         .programSwitch {
             margin-right: 16px;
         }
-        &:not(.tableBtn)::before {
+        &:not(.tableBtns)::before {
             content: "";
             vertical-align: middle;
             width: 0px;
@@ -48,14 +53,21 @@
     .tableIds {
         color: #494948;
     }
+    .tableBtns {
+        min-width: 25px;
+    }
     .tableTitles {
         font-weight: bold;
+        margin-right: 80px;
+        display: inline-block;
+    }
+    .tableSeasonsDiv .tableTitles{
+        margin-right: 50px;
+    }.tableEpisodeDiv .tableTitles{
+        margin-right: 36px;
     }
     .tableProgrammables {
         float: right;
-    }
-    .tableSeasonsDiv, .tableEpisodeDiv {
-        display: none;
     }
 
     .fit {

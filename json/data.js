@@ -3,28 +3,16 @@ var _Mapping = [
                 "key": "btns",
                 "name": "",
                 "id": "Btn",
-                "class": "fit"
+                "class": ""
         },
         {
-                "key": "title_id",
+                "key": ["title_id", "season_id", "episode_id"],
                 "name": "ID",
                 "id": "Id",
                 "class": "col-1"
         },
         {
-                "key": "season_id",
-                "name": "",
-                "id": "Id",
-                "class": "col-1"
-        },
-        {
-                "key": "episode_id",
-                "name": "",
-                "id": "Id",
-                "class": "col-1"
-        },
-        {
-                "key": "title_name",
+                "key": ["title_name", "season_name", "episode_name"],
                 "name": "Title Name",
                 "id": "Title",
                 "class": "col-5"
